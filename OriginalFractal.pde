@@ -15,11 +15,10 @@ public void draw() {
     currentFolds = regularPaperFold(deep);
     lastDeep = deep;
   }
-  println(currentFolds.length());
   dragoncurve((int)(300*sF+tX), (int)(300*sF+tY), deep, (int)(50*sF));
 }
 public void dragoncurve(int x, int y, int depth, int size){
-  String folds = currentFolds;
+  String folds = "11011001";
   int direction = 0;
   for(int i =0; i<folds.length(); i++){
     float t = (float)i / folds.length();
@@ -94,6 +93,7 @@ void mouseScrolled() {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
 
 
 
