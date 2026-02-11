@@ -30,19 +30,19 @@ public void dragoncurve(int x, int y, int depth, int size){
       direction=(direction+3)%4;
     }
     if(direction==0){
-      line(x, y, x+(size/depth), y);
+      line(x, y, x+(int)(size/depth), y);
       x+=(int)(size/depth);
     }
     else if(direction==1){
-      line(x, y, x, y+(size/depth));
+      line(x, y, x, y+(int)(size/depth));
       y+=(int)(size/depth);
     }
     else if(direction==2){
-      line(x, y, x-(size/depth), y);
+      line(x, y, x-(int)(size/depth), y);
       x-=(int)(size/depth);
     }
     else{
-      line(x, y, x, y-(size/depth));
+      line(x, y, x, y-(int)(size/depth));
       y-=(int)(size/depth);
     }
   }
@@ -93,6 +93,7 @@ void mouseScrolled() {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
 
 
 
