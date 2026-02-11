@@ -1,4 +1,4 @@
-int deep = 10;
+int deep = 2;
 int lastDeep = 0;
 String currentFolds = "";
 double tX = 0.0;
@@ -95,6 +95,7 @@ void mouseScrolled() {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
 
 
 
