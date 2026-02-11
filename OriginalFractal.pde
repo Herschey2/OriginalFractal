@@ -10,7 +10,6 @@ public void setup() {
 }
 public void draw() {
   background(255);
-  deep = 1 + (frameCount/60) % 14;
   if (deep != lastDeep) {
     currentFolds = regularPaperFold(deep);
     lastDeep = deep;
@@ -93,3 +92,4 @@ void mouseWheel(MouseEvent e) {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
