@@ -22,7 +22,7 @@ public void dragoncurve(float x, float y, int depth, float size){
   int direction = 0;
   int n = folds.length();
   if (n <= 0) return;
-  float step = size / (n + 1); // divide the total length into segments
+  float step = size / (n + 1); 
   for(int i = 0; i < n; i++){
     float t = (float)i / (float)n;
     stroke(0, 255 * t, 255 * (1 - t));
@@ -95,6 +95,7 @@ void mouseScrolled() {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
 
 
 
