@@ -1,4 +1,6 @@
 int deep = 10;
+int lastDeep = 0;
+String currentFolds = "";
 double tX = 0.0;
 double tY = 0.0;
 double sF = 1.0;
@@ -8,12 +10,15 @@ public void setup() {
 }
 public void draw() {
   background(255);
+  deep = 1 + (frameCount/60) % 14;
+  if (deep != lastDeep) {
+    currentFolds = regularPaperFold(deep);
+    lastDeep = deep;
+  }
   dragoncurve((int)(300*sF+tX), (int)(300*sF+tY), deep, (int)(50*sF));
-  deep = 1 + (frameCount/60) % 10;
-
 }
 public void dragoncurve(int x, int y, int depth, int size){
-  String folds = regularPaperFold(depth);
+  String folds = currentFolds;
   int direction = 0;
   for(int i =0; i<folds.length(); i++){
     float t = (float)i / folds.length();
@@ -43,7 +48,7 @@ public void dragoncurve(int x, int y, int depth, int size){
   }
 }
 public String regularPaperFold(int numFolds) {
-  if(numFolds==1){
+  if(numFolds<=1){
     return "1";
   }
   else{
@@ -76,19 +81,15 @@ void mouseDragged(MouseEvent e) {
   tX += mouseX - pmouseX;
   tY += mouseY - pmouseY;
 }
-void mouseScrolled() {
+void mouseWheel(MouseEvent e) {
   double f = 1.0;
-  if (mouseScroll < 0 && sF < 2000000000000.0) {
+  if (e.getCount() < 0 && sF < 2000000000000.0) {
     f = 1.1;
   } 
-  else if (mouseScroll > 0 && sF > .5) {
+  else if (e.getCount() > 0 && sF > .5) {
     f = 0.9; 
   }
   tX = mouseX + (tX - mouseX) * f;
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
-
-
-
-
