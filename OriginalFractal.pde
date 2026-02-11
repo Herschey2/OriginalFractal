@@ -18,7 +18,7 @@ public void draw() {
   dragoncurve((int)(300*sF+tX), (int)(300*sF+tY), deep, (int)(50*sF));
 }
 public void dragoncurve(int x, int y, int depth, int size){
-  String folds = "11011001";
+  String folds = currentFolds;
   int direction = 0;
   for(int i =0; i<folds.length(); i++){
     float t = (float)i / folds.length();
@@ -93,6 +93,7 @@ void mouseScrolled() {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
 
 
 
