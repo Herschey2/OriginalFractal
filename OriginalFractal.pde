@@ -15,37 +15,33 @@ public void draw() {
     currentFolds = regularPaperFold(deep);
     lastDeep = deep;
   }
-  dragoncurve((int)(300*sF+tX), (int)(300*sF+tY), deep, (int)(50*sF));
+  dragoncurve((int)(300*sF+tX), (int)(300*sF+tY), deep, (float)(400*sF));
 }
 public void dragoncurve(float x, float y, int depth, float size){
   String folds = currentFolds;
   int direction = 0;
   int n = folds.length();
-  if (n <= 0) return;
-  float step = size / (n + 1); 
-  for(int i = 0; i < n; i++){
-    float t = (float)i / (float)n;
+  int segments = n + 1;
+  if (segments <= 0) return;
+  float step = size / sqrt(segments);
+  for (int i = 0; i < segments; i++){
+    float t = (float)i / (float)max(1, segments - 1);
     stroke(0, 255 * t, 255 * (1 - t));
-    if(folds.charAt(i) == '1'){
-      direction = (direction + 1) % 4;
-    } else {
-      direction = (direction + 3) % 4;
-    }
-    if(direction == 0){
-      line(x, y, x + step, y);
-      x += step;
-    }
-    else if(direction == 1){
-      line(x, y, x, y + step);
-      y += step;
-    }
-    else if(direction == 2){
-      line(x, y, x - step, y);
-      x -= step;
-    }
-    else{
-      line(x, y, x, y - step);
-      y -= step;
+    float nx = x;
+    float ny = y;
+    if (direction == 0) nx = x + step;
+    else if (direction == 1) ny = y + step;
+    else if (direction == 2) nx = x - step;
+    else ny = y - step;
+    line(x, y, nx, ny);
+    x = nx;
+    y = ny;
+    if (i < n){
+      if (folds.charAt(i) == '1'){
+        direction = (direction + 1) % 4;
+      } else {
+        direction = (direction + 3) % 4;
+      }
     }
   }
 }
@@ -95,6 +91,7 @@ void mouseScrolled() {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
 
 
 
