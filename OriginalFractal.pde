@@ -9,7 +9,7 @@ public void setup() {
 public void draw() {
   background(255);
   dragoncurve((int)(300*sF+tX), (int)(300*sF+tY), deep, (int)(50*sF));
-  deep = 1 + (frameCount/60) % 14;
+  deep = 1 + (frameCount/60) % 13;
 
 }
 public void dragoncurve(int x, int y, int depth, int size){
@@ -88,5 +88,6 @@ void mouseScrolled() {
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
 
 
