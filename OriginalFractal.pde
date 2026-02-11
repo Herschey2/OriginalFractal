@@ -76,15 +76,16 @@ void mouseDragged(MouseEvent e) {
   tX += mouseX - pmouseX;
   tY += mouseY - pmouseY;
 }
-void mouseWheel(MouseEvent e) {
+void mouseScrolled() {
   double f = 1.0;
-  if (e.getCount() < 0 && sF < 2000000000000.0) {
+  if (mouseScrolled < 0 && sF < 2000000000000.0) {
     f = 1.1;
   } 
-  else if (e.getCount() > 0 && sF > .5) {
+  else if (mouseScrolled > 0 && sF > .5) {
     f = 0.9; 
   }
   tX = mouseX + (tX - mouseX) * f;
   tY = mouseY + (tY - mouseY) * f;
   sF *= f;
 }
+
