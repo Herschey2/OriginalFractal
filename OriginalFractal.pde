@@ -31,19 +31,19 @@ public void dragoncurve(int x, int y, int depth, int size){
     }
     if(direction==0){
       line(x, y, x+(size/depth), y);
-      x+=(size/depth);
+      x+=(int)(size/depth);
     }
     else if(direction==1){
       line(x, y, x, y+(size/depth));
-      y+=(size/depth);
+      y+=(int)(size/depth);
     }
     else if(direction==2){
       line(x, y, x-(size/depth), y);
-      x-=(size/depth);
+      x-=(int)(size/depth);
     }
     else{
       line(x, y, x, y-(size/depth));
-      y-=(size/depth);
+      y-=(int)(size/depth);
     }
   }
 }
